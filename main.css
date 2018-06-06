@@ -1,0 +1,9 @@
+input:required:invalid{
+    border: solid 1px blue;
+}
+.input-group{
+    display: block;
+}
+.span-for-errors{
+    display: block;
+}
