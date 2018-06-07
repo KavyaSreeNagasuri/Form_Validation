@@ -1,10 +1,19 @@
 
 var flag=0;
 function addDetails(){
+    $('span').hide();
     validateFirstName();
     validateLastName();
     validateDesignation();
-   
+    validateEmployeeCode();
+    validateBloodGroup();
+    // validateReasonsForIssues();
+    // validateDateOfJoining();
+    validateEmailId();
+    // validateMobileNum();
+    // validateEmerContact();
+    // if(flag==0)
+    //     postData();
 }
 
 function postData(){
@@ -24,67 +33,55 @@ const onPostSucess=(data)=>{
     console.log(data);
 }
 $('document').ready(()=>{
-    $('#errorfn').hide();
-    $('#errorln').hide();
-    $('#errorde').hide();
-    $('#erroren').hide();
+    $('span').hide();
 })
-
+function spanerror(sid,bid){
+    $(`#${sid}`).show();
+    $(`#${bid}`).css( "border","solid 1px red");
+}
 
 function validateFirstName(){
     const fn=$('#firstName').val();
-    if(fn===""){
-        flag=0;
-        $('#firstName').css( "border","solid 1px red")
-        $('#errorfn').show();
-        
-    }
-    else{
+    if(fn==""){
         flag=1;
+        spanerror('errorfn','firstName');  
     }
-    
 }
-
-  
 
 function validateLastName(){
     const ln=$('#lastName').val();
-    if(ln===""){
-        flag=0;
-        $('#lastName').css( "border","solid 1px red");
-        $('#errorln').show();
-    }
-    
-    else{
+    if(ln==""){
         flag=1;
+        spanerror('errorln','lastName');
     }
 }
 
-   
-
 function validateDesignation(){
     const de=$('#designation').val();
-    if(de===""){
-        flag=0;
-        $('#designation').css( "border","solid 1px red");
-        $('#errorde').show();
-    }
-
-    else{
+    if(de==""||de==null){
         flag=1;
-    }}
-
-    function validateEmp_No(){
-        const fn=$('#emp_no').val();
-        if(fn===""){
-            flag=0;
-            $('#emp_no').css( "border","solid 1px red")
-            $('#erroren').show();
-            
-        }
-        else{
-            flag=1;
-        }
-        
+        spanerror('errorde','designation');
     }
+}
+    
+function validateEmployeeCode(){
+        const ec=$('#emp_code').val();
+        if(ec===""){
+            flag=1;
+            spanerror('erroren','emp_code'); 
+        }
+}
 
+function validateEmailId(){
+    const ec=$('#email').val();
+    const p=/^[a-z|A-Z][a-z|A-Z|0-9]+@virtusa.com/;
+    const r=ec.match(p);
+    if(r==null||ec==""){
+        flag=1;
+        spanerror('errormail','email'); 
+    }
+}
+
+function validateBloodGroup(){
+    
+}

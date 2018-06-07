@@ -1,4 +1,4 @@
-input:required:invalid{
+input:invalid{
     border: solid 1px blue;
 }
 .input-group{
